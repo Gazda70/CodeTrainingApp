@@ -1,0 +1,21 @@
+<ol>
+    <li *ngFor="let question of (questions$ | async)">
+      <div>
+        <p>{{ question.text }}</p>
+        <ul>
+          @for (answer of question.answers; track answer; let index = $index) {
+              <button (click)="selectAnswer(question, answer)">
+                {{ answer.text }}
+              </button>
+          }
+        </ul>
+      </div>
+    </li>
+  </ol>
+
+  <button (click)="submitForm()">
+    Submit
+  </button>
+
+  <span>Result: {{ result }}</span>
+  
