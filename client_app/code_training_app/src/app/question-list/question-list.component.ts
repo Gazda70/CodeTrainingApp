@@ -1,7 +1,7 @@
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Answer, Question } from '../types' 
 
 @Component({
@@ -13,18 +13,6 @@ import { Answer, Question } from '../types'
 })
 export class QuestionListComponent implements OnInit {
 
-  // httpOptions = {
-  //   headers: new HttpHeaders({ 
-  //     'Access-Control-Allow-Origin':'*'
-  //   }),
-  //   params: new HttpParams({
-  //     fromObject:{
-  //     'questionId': question.questionId, 
-  //     'answerId': answer.answerId
-  //     }
-  //   })
-  // }
-
   questions$: Observable<any> | undefined;
 
   result: string = "";
@@ -34,12 +22,10 @@ export class QuestionListComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.questions$ = this.getQuestions();
-    this.questionIds = [];
-    this.questions$.subscribe((ques:Question[]) => {
-      this.questionIds = ques.map(q => q.questionId);
-      console.log(this.questionIds);
-    });
+    this.questions$ = this.getQuestions().pipe(tap( ques => {
+        this.questionIds = ques.map((q:Question) => q.questionId);
+      }
+    ));
   }
 
   getQuestions(): Observable<any> {
@@ -65,8 +51,6 @@ export class QuestionListComponent implements OnInit {
   }
 
   submitForm() {
-    console.log("Here");
-    console.log(this.questionIds);
     this.http.get('http://127.0.0.1:8080/api/questions/calculateResult', {
       params: new HttpParams({
         fromObject:{
