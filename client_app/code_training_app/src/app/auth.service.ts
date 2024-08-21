@@ -7,12 +7,11 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://your-api-url.com'; // Replace with your API endpoint
+  private apiUrl = 'http://127.0.0.1:8080/auth';
 
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<any> {
-    // Replace this with actual API call
     return this.http.post<any>(`${this.apiUrl}/login`, { username, password })
       .pipe(
         map(user => {
