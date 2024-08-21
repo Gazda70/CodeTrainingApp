@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">Available quizzes</mat-toolbar>
+<div class="container responsive-grid">
+    <mat-card *ngFor="let card of cards()">
+        <mat-card-header>
+            <mat-card-title>{{ card.title }}</mat-card-title>
+        </mat-card-header>
+        <br/>
+        <img mat-card-image [src]="card.imageUrl">
+        <mat-card-content>
+            <br/>
+            <p>
+                {{ card.description }}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a [routerLink]="card.routerLink">Start quiz</a>
+        </mat-card-actions>
+    </mat-card>
+</div>

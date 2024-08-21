@@ -9,3 +9,10 @@ export interface Answer {
     answerId:number,
     text:string
 }
+
+export interface CardContent {
+    title: string,
+    description: string,
+    imageUrl: string,
+    routerLink: string
+}
