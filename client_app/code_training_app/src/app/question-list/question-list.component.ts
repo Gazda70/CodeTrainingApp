@@ -4,11 +4,12 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Answer, Question } from '../types'
 import { RouterLink } from '@angular/router';
+import { QuestionComponent } from "../question/question.component";
 
 @Component({
   selector: 'app-question-list',
   standalone: true,
-  imports: [NgFor, NgIf, AsyncPipe, RouterLink],
+  imports: [NgFor, NgIf, AsyncPipe, RouterLink, QuestionComponent],
   templateUrl: './question-list.component.html',
   styleUrls: ['./question-list.component.scss']
 })

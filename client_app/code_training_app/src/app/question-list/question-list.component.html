@@ -1,6 +1,7 @@
 <ol>
   <li *ngFor="let question of (questions$ | async)">
-    <div>
+    <app-question></app-question>
+    <!-- <div>
       <p>{{ question.text }}</p>
       <ul>
         @for (answer of question.answers; track answer; let index = $index) {
@@ -9,7 +10,7 @@
             </button>
         }
       </ul>
-    </div>
+    </div> -->
   </li>
 </ol>
 
