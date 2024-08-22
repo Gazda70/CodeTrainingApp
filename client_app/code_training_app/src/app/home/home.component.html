@@ -1,58 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-1-circle"></i>Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login"><i class="bi bi-box-arrow-in-right"></i>Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/sign_up">Sign up</a>
-        </li>
-      </ul>
-      <!-- <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
-    </div>
+<app-navbar/>
+<!-- <app-quiz-grid/> -->
+ <div class="container bg-light py-5">
+  <h1 class="display-5 fw-bold">Welcome to Quiz App</h1>
+  <p class="bg-light fs-4">Some test text</p>
+  <h4>Rules:</h4>
+  <ol>
+    <li>Rule 1</li>
+    <li>Rule 2</li>
+    <li>Rule 3</li>
+    <li>Rule 4</li>
+  </ol>
+  <h1 style="font-family: cursive; text-align:center;">Dupa!</h1>
+  <div class="name col-md-4 my-3">
+    <label for="">Enter your name:</label>
+    <input type="text" class="form-control">
   </div>
-</nav>
-
-<app-quiz-grid/>
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-  <p class="col-md-4 mb-0 text-body-secondary">© 2024 Company, Inc</p>
-
-  <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-  </a>
-
-  <ul class="nav col-md-4 justify-content-end">
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-  </ul>
-</footer>
+  <button class="btn btn-primary btn-lg" routerLink="/question-list">Start the quiz</button>
+ </div>
+<app-footer/>
