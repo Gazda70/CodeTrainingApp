@@ -3,13 +3,15 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Answer, Question } from '../types'
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { QuestionComponent } from "../question/question.component";
+import { ResultsComponent } from "../results/results.component";
 
 @Component({
   selector: 'app-question-list',
   standalone: true,
-  imports: [NgFor, NgIf, AsyncPipe, RouterLink, QuestionComponent],
+  imports: [NgFor, NgIf, AsyncPipe, RouterLink, 
+    QuestionComponent, ResultsComponent],
   templateUrl: './question-list.component.html',
   styleUrls: ['./question-list.component.scss']
 })
@@ -21,7 +23,7 @@ export class QuestionListComponent implements OnInit {
 
   questionIds: number[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.questions$ = this.getQuestions().pipe(tap(ques => {
@@ -60,5 +62,6 @@ export class QuestionListComponent implements OnInit {
         }
       }),
     }).subscribe(res => this.result = res as string);
+    this.router.navigateByUrl('/results');
   }
 }
