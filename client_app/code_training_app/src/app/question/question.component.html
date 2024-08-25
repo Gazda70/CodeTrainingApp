@@ -6,7 +6,7 @@
             </div>
             <div class="quiz-header">
                 <h4 style="font-family: cursive;">Angular & Typescript Quiz!</h4>
-                <span style="font-style: italic;">Welcome User</span>
+                <span style="font-style: italic;">Welcome {{ name }}</span>
             </div>
         </div>
         <div class="d-flex justify-content-around py-3">
@@ -25,26 +25,20 @@
         </div> 
         <div class="question">
             <div class="card">
-                <h3>What is your name?</h3>
+                <h3>{{question.text}}</h3>
             </div>
         </div>
         <div class="options">
             <ol>
-                <li>
-                    <div class="card">
-                        Answer first
-                    </div>
-                </li>
-                <li>
-                    <div class="card">
-                        Second answer
-                    </div>
-                </li>
-                <li>
-                    <div class="card">
-                        Third answer
-                    </div>
-                </li>
+                @for (answer of question.answers; track answer; let index = $index) {
+                    <li>
+                        <div class="card">
+                            <button (click)="setAnswer(answer)">
+                                {{answer.text}}
+                            </button>
+                        </div>
+                    </li>
+                }
             </ol>
         </div>   
         <div class="d-flex justify-content-between">

@@ -1,6 +1,6 @@
 <ol>
   <li *ngFor="let question of (questions$ | async)">
-    <app-question></app-question>
+    <app-question [question]="question" (answerId)="selectAnswer(question, $event)"></app-question>
     <!-- <div>
       <p>{{ question.text }}</p>
       <ul>
@@ -14,13 +14,8 @@
   </li>
 </ol>
 
-<button (click)="submitForm()">
+<button type="button" class="btn btn-primary submit-button" (click)="submitForm()">
   Submit
 </button>
-
-<span>Result: {{ result }}</span>
-
 <br/>
-
-<a routerLink="/">Back to quizzes list</a>
   

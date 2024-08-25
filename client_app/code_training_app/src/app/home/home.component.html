@@ -10,11 +10,11 @@
     <li>Rule 3</li>
     <li>Rule 4</li>
   </ol>
-  <h1 style="font-family: cursive; text-align:center;">Dupa!</h1>
+  <h1 style="font-family: cursive; text-align:center;">Welcome!</h1>
   <div class="name col-md-4 my-3">
     <label for="">Enter your name:</label>
-    <input type="text" class="form-control">
+    <input #name type="text" class="form-control">
   </div>
-  <button class="btn btn-primary btn-lg" routerLink="/question-list">Start the quiz</button>
+  <button class="btn btn-primary btn-lg" routerLink="/question-list" (click)="startQuiz()">Start the quiz</button>
  </div>
 <app-footer/>
