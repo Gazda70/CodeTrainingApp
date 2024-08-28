@@ -45,7 +45,7 @@ export class LoginComponent {
       .subscribe({
         next: () => {
           // Navigate to the home page or another route upon successful login
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
         },
         error: (error: string) => {
           this.error = error;
