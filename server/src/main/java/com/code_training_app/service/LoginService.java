@@ -15,8 +15,8 @@ public class LoginService {
         this.userRepository = userRepository;
     }
 
-    public boolean login(String login, String password) {
-        User user = userRepository.findByLogin(login);
-        return user != null && user.getPassword().equals(password);
+    public User findByLoginAndPassword(String login, String password) {
+        User user = userRepository.findByLoginAndPassword(login, password);
+        return user;
     }
 }

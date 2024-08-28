@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@CrossOrigin()
+@CrossOrigin
 @RestController
 @RequestMapping("api")
 public class QuestionController {
@@ -29,30 +29,32 @@ public class QuestionController {
         String message = "Welcome to GeeksForGeeks";
         return message;
     }
-    @RequestMapping(value = "/questions", method=RequestMethod.GET)
+
+    @CrossOrigin
+    @RequestMapping(value = "/questions", method = RequestMethod.GET)
     public ResponseEntity<List<Question>> getQuestions() {
         return new ResponseEntity<>(this.questionService.getQuestions(), HttpStatus.OK);
     }
 
-    @PostMapping(value="/questions/create")
+    @PostMapping(value = "/questions/create")
     public ResponseEntity<String> createQuestion(@RequestParam String text, @RequestParam(required = false) List<String> answerTexts, @RequestParam Long correctAnswerId) {
         this.questionService.insertNewQuestionWithAnswers(text, answerTexts, correctAnswerId);
         return new ResponseEntity<>("Question created successfully", HttpStatus.CREATED);
     }
 
-    @RequestMapping(value="/questions/setQuestionAnswer", method=RequestMethod.PATCH, produces={"text/plain"})
+    @RequestMapping(value = "/questions/setQuestionAnswer", method = RequestMethod.PATCH, produces = {"text/plain"})
     public ResponseEntity<String> setQuestionAnswer(@RequestParam Long questionId, @RequestParam Long answerId) {
         this.questionService.updateQuestion(questionId, answerId);
         return new ResponseEntity<>("Question answer set successfully", HttpStatus.OK);
     }
 
-    @RequestMapping(value="/questions/calculateResult", method=RequestMethod.GET)
+    @RequestMapping(value = "/questions/calculateResult", method = RequestMethod.GET)
     public ResponseEntity<Long> calculateResult(@RequestParam String questionIds) {
         try {
             List<Long> ids = Arrays.stream(questionIds.split(",")).map(Long::parseLong).collect(Collectors.toList());
             Long result = questionService.calculatePoints(ids);
             return new ResponseEntity<>(result, HttpStatus.OK);
-        } catch(NumberFormatException nfe) {
+        } catch (NumberFormatException nfe) {
             nfe.printStackTrace();
             return new ResponseEntity<>(0L, HttpStatus.BAD_REQUEST);
         }

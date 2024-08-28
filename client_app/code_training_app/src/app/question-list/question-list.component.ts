@@ -33,7 +33,21 @@ export class QuestionListComponent implements OnInit {
   }
 
   getQuestions(): Observable<any> {
-    return this.http.get<Question>('http://127.0.0.1:8080/api/questions');
+    return this.http.get<Question>('http://127.0.0.1:8080/api/questions', {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `Bearer ${this.extractToken(localStorage.getItem('currentUser'))}`
+      }),
+    });
+  }
+
+  extractToken(user:string | null) {
+    console.log(user);
+    if(user === null) {
+      return "undefined";
+    }
+    const currentUser = JSON.parse(user);
+    return currentUser["token"];
   }
 
   selectAnswer(question: Question, answer: Answer) {
