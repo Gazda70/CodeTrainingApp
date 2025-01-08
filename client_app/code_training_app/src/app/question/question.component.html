@@ -33,7 +33,8 @@
                 @for (answer of question.answers; track answer; let index = $index) {
                     <li>
                         <div class="card">
-                            <button (click)="setAnswer(answer)">
+                            <button (click)="setAnswer(answer, index)" 
+                            [style.background-color] = "this.changeColor[index] === true ? 'red' : 'white'">
                                 {{answer.text}}
                             </button>
                         </div>

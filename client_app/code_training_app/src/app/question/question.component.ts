@@ -1,10 +1,11 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Answer, Question } from '../types';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-question',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './question.component.html',
   styleUrl: './question.component.scss'
 })
@@ -17,15 +18,26 @@ export class QuestionComponent implements OnInit {
 
   public name: string = "";
 
+  public changeColor: boolean[] = [];
+
   constructor() {
 
   }
 
   ngOnInit() {
     this.name = localStorage.getItem("name")!;
+    this.question.answers.forEach( answ => this.changeColor.push(false));
   }
 
-  setAnswer(answer: Answer) {
+  setAnswer(answer: Answer, index:number) {
+    this.changeColor[index]=!this.changeColor[index];
+    if(this.changeColor[index] === true) {
+      for(let i = 0; i < this.changeColor.length; i++) {
+        if(i !== index) {
+          this.changeColor[i] = false;
+        }
+      }
+    }
     this.answerId.emit(answer);
   }
 
