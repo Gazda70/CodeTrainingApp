@@ -2,7 +2,8 @@ import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Answer, Question } from '../types'
+import { Answer } from '../../model/answer'
+import { Question } from '../../model/question'
 import { Router, RouterLink } from '@angular/router';
 import { QuestionComponent } from "../question/question.component";
 import { ResultsComponent } from "../results/results.component";
@@ -77,5 +78,9 @@ export class QuestionListComponent implements OnInit {
       }),
     }).subscribe(res => this.result = res as string);
     this.router.navigateByUrl('/results');
+  }
+
+  quitTest() {
+    this.router.navigate(["/home"]);
   }
 }

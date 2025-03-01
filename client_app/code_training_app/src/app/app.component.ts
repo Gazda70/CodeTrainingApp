@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { QuestionListComponent } from './question-list/question-list.component';
-import { AuthService } from './auth.service';
+import { QuestionListComponent } from './components/question-list/question-list.component';
+import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
-import { LoginComponent } from "./login/login.component";
-import { HomeComponent } from "./home/home.component";
+import { LoginComponent } from "./components/login/login.component";
+import { HomeComponent } from "./components/home/home.component";
 
 @Component({
   selector: 'app-root',

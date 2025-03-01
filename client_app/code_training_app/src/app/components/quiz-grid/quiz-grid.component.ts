@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { CardContent } from '../types';
+import { CardContent } from '../../model/card_content';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Answer, Question } from '../types';
+import { Answer } from '../../model/answer';
+import { Question } from '../../model/question';
 import { NgClass } from '@angular/common';
 
 @Component({

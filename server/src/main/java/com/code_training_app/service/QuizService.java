@@ -6,6 +6,7 @@ import com.code_training_app.repository.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -23,5 +24,9 @@ public class QuizService {
         quiz.setQuizName(quizName);
         quiz.setQuestions(questions);
         quizRepository.save(quiz);
+    }
+
+    public List<Quiz> getAllQuizzes() {
+        return quizRepository.findAll();
     }
 }
