@@ -1,8 +1,10 @@
 package com.code_training_app.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name="question_answer")
 public class QuestionAnswer {
 

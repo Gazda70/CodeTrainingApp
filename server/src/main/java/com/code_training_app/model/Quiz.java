@@ -1,10 +1,12 @@
 package com.code_training_app.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Set;
 
 @Entity
+@Data
 @Table(name="quiz")
 public class Quiz {
 
