@@ -13,4 +13,8 @@ export class QuizService {
     getQuizzes(): Observable<Quiz[]> {
         return this.http.get<Quiz[]>("http://localhost:8080/api/quiz/all");
     }
+
+    getQuiz(id:number): Observable<Quiz> {
+        return this.http.get<Quiz>(`http://localhost:8080/api/quiz/${id}`);
+    }
 }

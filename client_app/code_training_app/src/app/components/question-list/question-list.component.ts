@@ -1,13 +1,11 @@
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Component, input } from '@angular/core';
 import { Answer } from '../../model/answer'
 import { Question } from '../../model/question'
 import { Router, RouterLink } from '@angular/router';
 import { QuestionComponent } from "../question/question.component";
 import { ResultsComponent } from "../results/results.component";
-import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-question-list',
@@ -17,22 +15,15 @@ import { QuestionService } from '../../services/question.service';
   templateUrl: './question-list.component.html',
   styleUrls: ['./question-list.component.scss']
 })
-export class QuestionListComponent implements OnInit {
+export class QuestionListComponent {
 
-  questions$: Observable<any> | undefined;
+  questions = input<Question[]>();
 
   result: string = "";
 
   questionIds: number[] = [];
 
-  constructor(private http: HttpClient, private question: QuestionService, private router: Router) { }
-
-  ngOnInit() {
-    this.questions$ = this.question.getQuestions().pipe(tap(ques => {
-        this.questionIds = ques.map((q: Question) => q.questionId);
-      }
-    ));
-  }
+  constructor(private http: HttpClient, private router: Router) { }
 
   selectAnswer(question: Question, answer: Answer) {
     question.chosenAnswer = answer;

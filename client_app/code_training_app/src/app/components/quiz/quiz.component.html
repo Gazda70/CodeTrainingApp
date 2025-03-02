@@ -1,2 +1,2 @@
-<h1>{{name()}}</h1>
-<app-question-list></app-question-list>
+<h1>{{($quiz | async)?.quizName}}</h1>
+<app-question-list [questions]="($quiz | async)?.questions"></app-question-list>

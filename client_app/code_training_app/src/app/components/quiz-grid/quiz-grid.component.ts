@@ -36,7 +36,7 @@ export class QuizGridComponent implements OnInit {
         title: quiz.quizName,
         description: "Desc",
         imageUrl: 'url',
-        routerLink: "/quiz"
+        routerLink: `/quiz/${quiz.quizId}`
       }
     ))
     this.cards.set(cards);

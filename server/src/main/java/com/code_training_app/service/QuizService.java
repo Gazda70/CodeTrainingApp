@@ -29,4 +29,8 @@ public class QuizService {
     public List<Quiz> getAllQuizzes() {
         return quizRepository.findAll();
     }
+
+    public Quiz getQuiz(Long id) {
+        return quizRepository.findById(id).orElseThrow();
+    }
 }

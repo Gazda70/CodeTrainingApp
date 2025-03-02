@@ -4,6 +4,7 @@ import { QuestionListComponent } from './components/question-list/question-list.
 import { HomeComponent } from './components/home/home.component';
 import { ResultsComponent } from './components/results/results.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { QuizService } from './services/quiz.service';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -11,5 +12,5 @@ export const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'results', component: ResultsComponent },
     { path: 'question-list', component: QuestionListComponent },
-    { path: 'quiz', component: QuizComponent }
+    { path: 'quiz/:id', component: QuizComponent}
 ];

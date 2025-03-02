@@ -1,5 +1,5 @@
 <ol>
-  <li *ngFor="let question of (questions$ | async)">
+  <li *ngFor="let question of questions()">
     <app-question [question]="question" (answerId)="selectAnswer(question, $event)"></app-question>
     <!-- <div>
       <p>{{ question.text }}</p>
