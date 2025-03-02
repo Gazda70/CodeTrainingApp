@@ -7,6 +7,7 @@ import { Question } from '../../model/question'
 import { Router, RouterLink } from '@angular/router';
 import { QuestionComponent } from "../question/question.component";
 import { ResultsComponent } from "../results/results.component";
+import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-question-list',
@@ -24,31 +25,13 @@ export class QuestionListComponent implements OnInit {
 
   questionIds: number[] = [];
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private question: QuestionService, private router: Router) { }
 
   ngOnInit() {
-    this.questions$ = this.getQuestions().pipe(tap(ques => {
-      this.questionIds = ques.map((q: Question) => q.questionId);
-    }
+    this.questions$ = this.question.getQuestions().pipe(tap(ques => {
+        this.questionIds = ques.map((q: Question) => q.questionId);
+      }
     ));
-  }
-
-  getQuestions(): Observable<any> {
-    return this.http.get<Question>('http://127.0.0.1:8080/api/questions', {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': `Bearer ${this.extractToken(localStorage.getItem('currentUser'))}`
-      }),
-    });
-  }
-
-  extractToken(user:string | null) {
-    console.log(user);
-    if(user === null) {
-      return "undefined";
-    }
-    const currentUser = JSON.parse(user);
-    return currentUser["token"];
   }
 
   selectAnswer(question: Question, answer: Answer) {

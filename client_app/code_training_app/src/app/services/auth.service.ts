@@ -27,6 +27,15 @@ export class AuthService {
     localStorage.removeItem('currentUser');
   }
 
+  extractToken(user:string | null) {
+    console.log(user);
+    if(user === null) {
+      return "undefined";
+    }
+    const currentUser = JSON.parse(user);
+    return currentUser["token"];
+  }
+
   public get currentUserValue() {
     return JSON.parse(localStorage.getItem('currentUser')!);
   }

@@ -11,9 +11,7 @@
     <li>Rule 4</li>
   </ol>
   <h1 style="font-family: cursive; text-align:center;">Welcome!</h1>
-  <mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let quiz of ($quizzes | async)">{{quiz.quizName}}</mat-grid-tile>
-  </mat-grid-list>  
+  <app-quiz-grid [quizzes]="$quizzes"></app-quiz-grid>
   <div class="name col-md-4 my-3">
     <label for="">Enter your name:</label>
     <input #name type="text" class="form-control">

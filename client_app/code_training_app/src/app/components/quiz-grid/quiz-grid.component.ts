@@ -1,10 +1,12 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, input, OnInit, Input } from '@angular/core';
 import { CardContent } from '../../model/card_content';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Quiz } from '../../model/quiz';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-quiz-grid',
@@ -13,8 +15,11 @@ import { RouterLink } from '@angular/router';
   templateUrl: './quiz-grid.component.html',
   styleUrl: './quiz-grid.component.scss'
 })
-export class QuizGridComponent {
+export class QuizGridComponent implements OnInit {
   cards = signal<CardContent[]>([]);
+
+  @Input()
+  quizzes: Observable<Quiz[]> | undefined;
 
   images = [
     'alg_graph.png',
@@ -23,16 +28,18 @@ export class QuizGridComponent {
     'ds_tree.png'
   ]
 
-  ngOnInit(): void {
-    const cards: CardContent[] = [];
-    for(let i = 0; i < this.images.length; i++) {
-      cards.push({
-        title: `Quiz ${i + 1}`,
+  ngOnInit() {
+    this.quizzes?.subscribe(quizzes =>
+      {
+        const cards: CardContent[] = [];
+        quizzes.forEach(quiz =>cards.push({
+        title: quiz.quizName,
         description: "Desc",
-        imageUrl: this.images[i],
-        routerLink: "question-list"
-      })
-    }
+        imageUrl: 'url',
+        routerLink: "/quiz"
+      }
+    ))
     this.cards.set(cards);
+    });
   }
 }
