@@ -35,7 +35,7 @@ export class QuizGridComponent implements OnInit {
         quizzes.forEach(quiz =>cards.push({
         title: quiz.quizName,
         description: "Desc",
-        imageUrl: 'url',
+        image: 'data:image/jpeg;base64,' + quiz.image,
         routerLink: `/quiz/${quiz.quizId}`
       }
     ))

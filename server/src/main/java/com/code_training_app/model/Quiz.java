@@ -2,6 +2,7 @@ package com.code_training_app.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Type;
 
 import java.util.Set;
 
@@ -25,4 +26,8 @@ public class Quiz {
             inverseJoinColumns = { @JoinColumn(name = "question_id") }
     )
     private Set<Question> questions;
+
+    @Lob
+    @Column(name="image", columnDefinition = "bytea")
+    private Object image;
 }

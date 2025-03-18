@@ -1,6 +1,6 @@
 export interface CardContent {
     title: string,
     description: string,
-    imageUrl: string,
+    image: string,
     routerLink: string
 }
