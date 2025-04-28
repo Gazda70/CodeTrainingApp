@@ -1,14 +1,17 @@
-import { Component, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component } from '@angular/core';
+import { ResultService } from '../../services/result.service';
 
 @Component({
   selector: 'app-results',
   standalone: true,
-  imports: [RouterLink],
   templateUrl: './results.component.html',
   styleUrl: './results.component.scss'
 })
 export class ResultsComponent {
-  @Input("result")
   result: number = 0;
+  
+  constructor(private resultService: ResultService) {
+    this.result = this.resultService.getResult();
+  }
+
 }

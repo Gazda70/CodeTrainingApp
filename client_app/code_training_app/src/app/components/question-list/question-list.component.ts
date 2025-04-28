@@ -6,6 +6,7 @@ import { Question } from '../../model/question'
 import { Router, RouterLink } from '@angular/router';
 import { QuestionComponent } from "../question/question.component";
 import { ResultsComponent } from "../results/results.component";
+import { ResultService } from '../../services/result.service';
 
 @Component({
   selector: 'app-question-list',
@@ -23,7 +24,8 @@ export class QuestionListComponent {
 
   questionIds: number[] = [];
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router,
+    private resultService: ResultService) { }
 
   selectAnswer(question: Question, answer: Answer) {
     question.chosenAnswer = answer;
@@ -47,11 +49,14 @@ export class QuestionListComponent {
     this.http.get('http://127.0.0.1:8080/api/questions/calculateResult', {
       params: new HttpParams({
         fromObject: {
-          questionIds: this.questionIds.join(',')
+          questionIds: this.questions()?.map(q => q.questionId).join(',') || '',
         }
       }),
-    }).subscribe(res => this.result = res as string);
-    this.router.navigateByUrl('/results');
+    }).subscribe(res => {
+      this.result = res as string;
+      this.resultService.setResult(parseInt(this.result));
+      this.router.navigateByUrl('/results');
+    });
   }
 
   quitTest() {
