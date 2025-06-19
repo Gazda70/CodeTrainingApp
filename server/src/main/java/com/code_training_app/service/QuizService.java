@@ -2,6 +2,7 @@ package com.code_training_app.service;
 
 import com.code_training_app.model.Question;
 import com.code_training_app.model.Quiz;
+import com.code_training_app.model.User;
 import com.code_training_app.repository.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

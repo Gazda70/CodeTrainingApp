@@ -2,6 +2,7 @@ package com.code_training_app.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -38,6 +39,9 @@ public class Question {
 
     @Column
     private Long correctAnswerId;
+
+    @ManyToMany(mappedBy = "questions")
+    private List<Quiz> quizzes;
 
     public void setCorrectAnswerId(Long correctAnswerId) {
         this.correctAnswerId = correctAnswerId;

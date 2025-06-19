@@ -2,8 +2,6 @@ package com.code_training_app.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.Type;
-
 import java.util.Set;
 
 @Entity
