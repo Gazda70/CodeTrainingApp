@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 @CrossOrigin
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class QuestionController {
 
     private QuestionService questionService;

@@ -24,8 +24,8 @@ public class QuizSolution {
     private Set<QuestionAnswer> questionAnswers;
 
     @OneToOne
-    @PrimaryKeyJoinColumn(name="solver")
-    private User solver;
+    @PrimaryKeyJoinColumn(name="app_user_id")
+    private User appUser;
 
     @Column(name="result")
     private Long result;

@@ -4,8 +4,10 @@ import com.code_training_app.model.*;
 import com.code_training_app.repository.QuestionAnswerRepository;
 import com.code_training_app.repository.QuestionRepository;
 import com.code_training_app.repository.QuizSolutionRepository;
+import com.code_training_app.security.CustomUserDetails;
 import com.code_training_app.service.exception.NoQuizSolutionException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,13 +42,14 @@ public class QuizSolutionService {
         quizSolution.setQuiz(quiz);
         quizSolution.setQuestionAnswers(questionAnswers);
         quizSolution.setResult(result);
-        quizSolution.setSolver(solver);
+        quizSolution.setAppUser(solver);
         quizSolutionRepository.save(quizSolution);
     }
 
 
-    public QuizSolution getQuizSolutionsForAppUser(User user) {
-        return quizSolutionRepository.getQuizSolutionsByAppUserId(user.getUserId());
+    public List<QuizSolution> getQuizSolutionsForAppUser() {
+        CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return quizSolutionRepository.findAllByAppUserId(customUserDetails.getUserId());
     }
 
     public QuizSolution getQuizSolutionForAppUserAndQuiz(Long userId, Long quizId) {
