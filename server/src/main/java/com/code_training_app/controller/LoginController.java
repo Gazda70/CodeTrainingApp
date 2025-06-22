@@ -2,7 +2,7 @@ package com.code_training_app.controller;
 
 import com.code_training_app.model.User;
 import com.code_training_app.service.LoginService;
-import com.code_training_app.service.jwt.JwtGeneratorImpl;
+import com.code_training_app.security.jwt.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +12,16 @@ import java.util.HashMap;
 
 @CrossOrigin
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 public class LoginController {
 
     private LoginService loginService;
 
-    private JwtGeneratorImpl jwtGenerator;
+    private JwtService jwtService;
 
     @Autowired
-    public void setJwtGenerator(JwtGeneratorImpl jwtGenerator) {
-        this.jwtGenerator = jwtGenerator;
+    public void setJwtGenerator(JwtService jwtService) {
+        this.jwtService = jwtService;
     }
 
     @Autowired
@@ -36,7 +36,7 @@ public class LoginController {
             if (userData == null) {
                 throw new UserNotFoundException("Login or Password is Invalid");
             }
-            return new ResponseEntity<>(jwtGenerator.generateToken(userData), HttpStatus.OK);
+            return new ResponseEntity<>(jwtService.generateToken(userData), HttpStatus.OK);
         } catch (UserNotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
