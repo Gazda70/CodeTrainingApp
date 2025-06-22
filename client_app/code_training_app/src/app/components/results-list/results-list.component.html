@@ -1,0 +1,7 @@
+<div *ngIf="$results | async as results">
+    <div *ngFor="let result of results">
+        <div class="result-item">
+            {{ result.result }}
+        </div>
+    </div>
+</div>

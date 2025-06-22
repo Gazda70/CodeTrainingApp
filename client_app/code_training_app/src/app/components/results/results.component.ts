@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ResultService } from '../../services/result.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-results',
