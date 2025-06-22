@@ -13,16 +13,7 @@ export class QuizSolutionService {
     constructor(private http: HttpClient, private auth: AuthService) {}
 
     getSolutionsByUser(): Observable<QuizSolution[]> {
-        console.log('Fetching quiz solutions for the current user');
-        return this.http.get<QuizSolution[]>(`${this.apiUrl}/for_current_user`
-            // , 
-            // {
-            //         headers: new HttpHeaders({
-            //         'Access-Control-Allow-Origin': '*',
-            //         'Authorization': `Bearer ${this.auth.extractToken(localStorage.getItem('currentUser'))}`
-            //         }),
-            //     }
-            );
+        return this.http.get<QuizSolution[]>(`${this.apiUrl}/for_current_user`);
     }
 
     getSolutionForQuiz(userId: string, quizId: string): Observable<QuizSolution> {
