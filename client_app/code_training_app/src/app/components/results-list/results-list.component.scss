@@ -1,0 +1,27 @@
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+  padding: 24px;
+}
+
+.result-tile {
+  background: #73a124;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(43, 35, 35, 0.077);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.quiz-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.quiz_score {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}

@@ -1,7 +1,6 @@
-<div *ngIf="$results | async as results">
-    <div *ngFor="let result of results">
-        <div class="result-item">
-            {{ result.result }}
-        </div>
-    </div>
+<div *ngIf="$results | async as results" class="results-grid">
+  <div *ngFor="let result of results" class="result-tile">
+    <div class="quiz_title">Quiz title: {{ result.quiz.quizName }}</div>
+    <div class="quiz_score">Score: {{ result.result }}</div>
+  </div>
 </div>
