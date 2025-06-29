@@ -26,8 +26,4 @@ export class HomeComponent {
   constructor(private quizService: QuizService) {
     this.$quizzes = this.quizService.getQuizzes();
   }
-
-  startQuiz() {
-    localStorage.setItem("name", this.nameKey.nativeElement.value);
-  }
 }

@@ -1,21 +1,26 @@
-<app-navbar/>
-<!-- <app-quiz-grid/> -->
- <div class="container bg-light py-5">
-  <h1 class="display-5 fw-bold">Welcome to Quiz App</h1>
-  <p class="bg-light fs-4">Some test text</p>
-  <h4>Rules:</h4>
-  <ol>
-    <li>Rule 1</li>
-    <li>Rule 2</li>
-    <li>Rule 3</li>
-    <li>Rule 4</li>
-  </ol>
-  <h1 style="font-family: cursive; text-align:center;">Welcome!</h1>
-  <app-quiz-grid [quizzes]="$quizzes"></app-quiz-grid>
-  <div class="name col-md-4 my-3">
-    <label for="">Enter your name:</label>
-    <input #name type="text" class="form-control">
+<app-navbar />
+
+<div class="landing-hero container-fluid py-5 mb-5" style="background: linear-gradient(120deg, #e0e7ff 0%, #fff 100%);">
+  <div class="row align-items-center">
+    <div class="col-md-7 text-center text-md-start">
+      <h1 class="display-3 fw-bold text-primary mb-3">Welcome to Quiz App</h1>
+      <p class="lead mb-4 text-secondary">
+        Sharpen your skills with interactive quizzes on programming, algorithms, and more.<br>
+        Challenge yourself and track your progress!
+      </p>
+      <a routerLink="/sign_up" class="btn btn-lg btn-primary me-2">Get Started</a>
+      <a routerLink="/login" class="btn btn-lg btn-outline-primary">Login</a>
+    </div>
+    <div class="col-md-5 text-center d-none d-md-block">
+      <img src="https://img.icons8.com/color/200/000000/angularjs.png" alt="Quiz App Logo" class="img-fluid" style="max-height: 220px;">
+    </div>
   </div>
-  <button class="btn btn-primary btn-lg" routerLink="/question-list" (click)="startQuiz()">Start the quiz</button>
- </div>
-<app-footer/>
+</div>
+
+<div class="container bg-light py-5 rounded shadow-sm mb-5">
+  <h2 class="fw-bold text-center mb-4 text-primary">Available Quizzes</h2>
+  <hr class="mb-5 w-50 mx-auto" />
+  <app-quiz-grid [quizzes]="$quizzes"></app-quiz-grid>
+</div>
+
+<app-footer />
