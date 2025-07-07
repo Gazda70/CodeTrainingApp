@@ -1,5 +1,6 @@
-<ol>
-  <li *ngFor="let question of questions()">
+<h2 class="question-list-heading text-center mb-4">Quiz Questions</h2>
+<div class="grid-container">
+  <li *ngFor="let question of questions()" class="grid-item">
     <app-question [question]="question" (answerId)="selectAnswer(question, $event)"></app-question>
     <!-- <div>
       <p>{{ question.text }}</p>
@@ -12,13 +13,13 @@
       </ul>
     </div> -->
   </li>
-</ol>
-
-<button type="button" class="btn btn-primary submit-button" (click)="submitForm()">
-  Submit
-</button>
-<button type="button" class="btn btn-primary submit-button" (click)="quitTest()">
-  Quit test
-</button>
-<br/>
+  <div class="grid-buttons">
+    <button type="button" class="btn btn-primary submit-button grid-button-submit" (click)="submitForm()">
+    Submit
+    </button>
+    <button type="button" class="btn btn-primary submit-button grid-button-quit" (click)="quitTest()">
+      Quit test
+    </button>
+  </div>
+</div>
   
